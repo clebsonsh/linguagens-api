@@ -1,9 +1,6 @@
 package br.com.alura.linguagens.api;
 
-import com.mongodb.lang.Nullable;
-import org.bson.json.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,13 +35,4 @@ public class LinguagemController {
         Linguagem linguagemSalva = repositorio.save(linguagem);
         return linguagemSalva;
     }
-
-    @DeleteMapping("/linguagens/{id}")
-    public void deletarLinguaguem(@PathVariable("id") String id) {
-        Linguagem linguagem = repositorio.findById(id)
-                .orElse(new Linguagem());
-
-        repositorio.delete(linguagem);
-    }
-
 }
